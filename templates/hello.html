@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macros %}
+
+{% block title %} 
+    {{ super() }}
+    Bienvenido 
+{% endblock %}
+
+    {% block content %}
+    <div class="container">
+    {% if user_ip %}
+        <h1>Hello con los template de platzi {{ user_ip }}</h1>
+    {% else %}
+        <a href="{{ url_for('index') }}">Ir a inicio</a>
+    {% endif %}
+    
+        <ul class="list-group">
+            {% for todo in TODOS%}
+                {{ macros.render_todo(todo) }}
+            {%endfor%}
+        </ul>
+    </div>
+
+{%endblock%}
